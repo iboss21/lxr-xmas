@@ -45,5 +45,11 @@ RegisterCommand(Config.Commands.volumeCommand, function(source, args, raw)
 		volume = 0
 	end
 
-	TriggerClientEvent("xmas:setMaxVolume", source, volume)
+	TriggerClientEvent('xmas:setMaxVolume', source, volume)
+
+	Framework.Notify(source, '🎵 Christmas music volume set to ' .. volume .. '%', 'success', 4000)
+
+	if Config.Debug then
+		Framework.Log(source, 'VOLUME_SET', 'Admin changed music volume', { volume = volume })
+	end
 end, true)
