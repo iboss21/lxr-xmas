@@ -1,3 +1,19 @@
+--[[
+    ██╗     ██╗  ██╗██████╗         ██╗  ██╗███╗   ███╗ █████╗ ███████╗
+    ██║     ╚██╗██╔╝██╔══██╗        ╚██╗██╔╝████╗ ████║██╔══██╗██╔════╝
+    ██║      ╚███╔╝ ██████╔╝█████╗   ╚███╔╝ ██╔████╔██║███████║███████╗
+    ██║      ██╔██╗ ██╔══██╗╚════╝   ██╔██╗ ██║╚██╔╝██║██╔══██║╚════██║
+    ███████╗██╔╝ ██╗██║  ██║        ██╔╝ ██╗██║ ╚═╝ ██║██║  ██║███████║
+    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝        ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝
+
+    🐺 LXR Core - Christmas Experience System | Train Decorations
+    © 2026 iBoss21 / The Lux Empire | wolves.land | All Rights Reserved
+]]
+
+-- ═══════════════════════════════════════════════════════════════════════════════
+-- TRAIN DECORATION ENGINE
+-- ═══════════════════════════════════════════════════════════════════════════════
+
 local Trains = {}
 
 local entityEnumerator = {
@@ -37,14 +53,10 @@ function EnumerateVehicles()
 	return EnumerateEntities(FindFirstVehicle, FindNextVehicle, EndFindVehicle)
 end
 
-local TrainModels = {
-	'northsteamer01x'
-}
-
 function IsTrain(vehicle)
 	local model = GetEntityModel(vehicle)
 
-	for _, trainModel in ipairs(TrainModels) do
+	for _, trainModel in ipairs(Config.Trains.trainModels) do
 		if model == GetHashKey(trainModel) then
 			return true
 		end
@@ -54,7 +66,7 @@ function IsTrain(vehicle)
 end
 
 function DecorateTrain(vehicle)
-	local object = CreateObjectNoOffset(GetHashKey('mp006_p_veh_xmasnsteamer01x'), 0, 0, 0, false, false, false, false)
+	local object = CreateObjectNoOffset(GetHashKey(Config.Trains.decorationProp), 0, 0, 0, false, false, false, false)
 	AttachEntityToEntity(object, vehicle, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 0, true, false, false)
 	return object
 end
