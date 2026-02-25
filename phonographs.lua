@@ -1,16 +1,18 @@
-local Phonographs = {
-	vector3(3352.95, -639.82, 45.08), -- Sisika
-	vector3(-312.85, 798.83, 119.48), -- Valentine
-	vector3(-1811.78, -372.80, 161.90), -- Strawberry
-	vector3(-815.16, -1312.52, 44.19), -- Blackwater
-	vector3(1346.93, -1370.52, 80.99), -- Rhodes
-	vector3(2948.84, 518.82, 45.15), -- Van Horn
-	vector3(2630.60, -1226.35, 53.17), -- Saint Denis
-	vector3(-3706.02, -2588.31, -12.82), -- Armadillo
-	vector3(-5516.50, -2914.97, -1.26), -- Tumbleweed
-	vector3(2801.20, -1164.42, 48.43), -- Saint Denis 2
-	vector3(2935.13, 1274.38, 43.65), -- Annesburg
-}
+--[[
+    ██╗     ██╗  ██╗██████╗         ██╗  ██╗███╗   ███╗ █████╗ ███████╗
+    ██║     ╚██╗██╔╝██╔══██╗        ╚██╗██╔╝████╗ ████║██╔══██╗██╔════╝
+    ██║      ╚███╔╝ ██████╔╝█████╗   ╚███╔╝ ██╔████╔██║███████║███████╗
+    ██║      ██╔██╗ ██╔══██╗╚════╝   ██╔██╗ ██║╚██╔╝██║██╔══██║╚════██║
+    ███████╗██╔╝ ██╗██║  ██║        ██╔╝ ██╗██║ ╚═╝ ██║██║  ██║███████║
+    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝        ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝
+
+    🐺 LXR Core - Christmas Experience System | Phonographs
+    © 2026 iBoss21 / The Lux Empire | wolves.land | All Rights Reserved
+]]
+
+-- ═══════════════════════════════════════════════════════════════════════════════
+-- PHONOGRAPH AUDIO ENGINE
+-- ═══════════════════════════════════════════════════════════════════════════════
 
 function GetListenerCoords()
 	local cam = GetRenderingCam()
@@ -33,10 +35,9 @@ CreateThread(function()
 		Wait(100)
 
 		local pos = GetListenerCoords()
-
 		local minDistance = nil
 
-		for _, phonograph in ipairs(Phonographs) do
+		for _, phonograph in ipairs(Config.Phonographs) do
 			local distance = #(pos - phonograph)
 
 			if not minDistance or distance < minDistance then
